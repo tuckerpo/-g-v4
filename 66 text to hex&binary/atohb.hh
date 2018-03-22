@@ -3,6 +3,10 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include <map>
+#include <array>
+
+typedef std::map<int, char>::iterator map_it;
 
 int* converttobinary(char c) {
 	int bits[8], i;
@@ -21,6 +25,19 @@ std::vector<int*> bin_str(std::string s) {
     for (unsigned i = 0; i < s.size(); ++i) {
         str.push_back(converttobinary(s[i]));
     }
+}
+
+void bin_to_hex(std::vector<int*> lin_bin) {
+    std::string hex_holder("");
+    std::map<int, char> binary_to_char_map;
+    std::pair<int, char> p;
+    std::vector<char>   hex_lookup = 
+    {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+    std::vector<int> bin_equiv_vec = {{0000}, {0001}, {0010}, {0011}, {0100}, {0101}, {0110}, {0111}, {1000}, {1001}, {1010}, {1011}, {1100}, {1101}, {1110}, {1111}};
+    for (unsigned n = 0; n < lin_bin.size(); ++n) {
+        binary_to_char_map.insert(std::make_pair(bin_equiv_vec[n], binary_to_char_map[n]));
+    }
+    
 }
 
 
